@@ -534,6 +534,7 @@ void bg_cleanCache(){
 //NSDate转字符串,格式: yyyy-MM-dd HH:mm:ss
 +(NSString*)stringWithDate:(NSDate*)date{
     NSDateFormatter* formatter = [NSDateFormatter new];
+    [formatter setCalendar: [[NSCalendar alloc]    initWithCalendarIdentifier:NSCalendarIdentifierGregorian]];
     formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss.SSS";
     return [formatter stringFromDate:date];
 }
@@ -963,6 +964,7 @@ void bg_cleanCache(){
     if(!jsonString || [jsonString isKindOfClass:[NSNull class]])return nil;
     
     NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setCalendar: [[NSCalendar alloc]    initWithCalendarIdentifier:NSCalendarIdentifierGregorian]];
     formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss.SSS";
     NSDate *date = [formatter dateFromString:jsonString];
     return date;
